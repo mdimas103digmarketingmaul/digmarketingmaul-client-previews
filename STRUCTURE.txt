@@ -1,0 +1,23 @@
+digmarketingmaul-client-previews/
+├── index.html
+├── 404.html
+├── README.md
+├── .gitignore
+├── assets/
+│   ├── brand/
+│   │   └── favicon.svg
+│   ├── css/
+│   │   ├── dashboard.css
+│   │   └── client.css
+│   └── js/
+│       ├── dashboard.js
+│       └── projects.js
+└── _client-template/
+    ├── index.html
+    ├── option-01/
+    │   └── index.html
+    ├── option-02/
+    │   └── index.html
+    └── assets/
+        ├── README.md
+        └── images/

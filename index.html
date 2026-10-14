@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0b0c">
+  <title>DIGMARKETINGMAUL — Client Previews</title>
+  <meta name="description" content="Website design previews and development workspace by DIGMARKETINGMAUL.">
+  <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/dashboard.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="DIGMARKETINGMAUL Client Previews">
+      <span class="brand-mark">DM</span>
+      <span class="brand-copy">
+        <strong>DIGMARKETINGMAUL</strong>
+        <small>Client Preview Workspace</small>
+      </span>
+    </a>
+    <span class="header-badge">PUBLIC PREVIEW</span>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <p class="eyebrow">WEBSITE DESIGN & DEVELOPMENT</p>
+      <h1>Client Preview<br><span>Workspace.</span></h1>
+      <p class="hero-copy">
+        Ruang preview untuk eksplorasi desain, pilihan visual, dan progress website
+        yang dikerjakan oleh DIGMARKETINGMAUL.
+      </p>
+      <div class="hero-meta">
+        <span><b id="projectCount">0</b> Active Projects</span>
+        <span>Cloudflare Pages</span>
+        <span>GitHub Workflow</span>
+      </div>
+    </section>
+
+    <section class="projects-section" aria-labelledby="projectsTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PROJECTS</p>
+          <h2 id="projectsTitle">Current previews</h2>
+        </div>
+        <p class="section-note">Pilih project untuk membuka halaman preview client.</p>
+      </div>
+
+      <div id="projectGrid" class="project-grid" aria-live="polite"></div>
+
+      <div id="emptyState" class="empty-state" hidden>
+        <span class="empty-icon">＋</span>
+        <h3>Belum ada project aktif</h3>
+        <p>Tambahkan client baru pada <code>assets/js/projects.js</code>, lalu buat folder client di root repository.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> DIGMARKETINGMAUL</span>
+    <span>Design previews for client presentation</span>
+  </footer>
+
+  <script src="/assets/js/projects.js"></script>
+  <script src="/assets/js/dashboard.js"></script>
+</body>
+</html>

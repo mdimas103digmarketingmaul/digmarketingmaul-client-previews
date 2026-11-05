@@ -12,4 +12,14 @@
 //   accent: "#d9ff57"
 // }
 
-window.DM_PROJECTS = [];
+window.DM_PROJECTS = [
+  {
+    name: "Hijra Bank",
+    slug: "hijra-bank",
+    type: "Homepage Redesign Exploration",
+    status: "Design Exploration",
+    updated: "5 Nov 2026",
+    options: 2,
+    accent: "#11b8e4"
+  }
+];

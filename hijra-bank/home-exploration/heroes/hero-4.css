@@ -1,0 +1,60 @@
+/* Option 04: one goal at a time. The app's colour picker drives the whole page. */
+
+.hero {
+  --H: max(680px, 100svh);
+  --bg: #4f8a2c; --pill: #9ed36a;
+  position: relative; height: var(--H); overflow: hidden; color: #fff; background: var(--bg);
+}
+.wash { position: absolute; inset: 0; z-index: 0; clip-path: circle(0 at 50% 100%); }
+
+.copy { position: absolute; z-index: 5; left: var(--g); top: 48%; transform: translateY(-50%); width: min(56vw, 860px); }
+h1 { font: 700 clamp(56px, 8.2vw, 150px)/1 var(--head); letter-spacing: -.055em; }
+.goal { display: inline-block; white-space: nowrap; }
+.goal i { display: inline-block; font-style: normal; }
+.lead { margin-top: 26px; max-width: 26em; font-size: clamp(17px, 1.42vw, 21px); line-height: 1.4; color: rgba(255, 255, 255, .92); }
+.cta { display: flex; align-items: center; gap: 22px; margin-top: 32px; }
+.legal { font-size: 13px; line-height: 1.35; color: rgba(255, 255, 255, .8); }
+
+.vault { position: absolute; z-index: 6; right: clamp(40px, 8vw, 150px); top: 47%; transform: translateY(-50%); width: min(30vw, calc(var(--H) * .52)); aspect-ratio: 5 / 6; --focus: #fff; border-radius: 15%; animation: pop .9s var(--spring) both; }
+@keyframes pop { from { transform: translateY(-46%) scale(.7); opacity: 0; } to { transform: translateY(-50%) scale(1); opacity: 1; } }
+.vault__tilt { position: absolute; inset: 0; display: block; overflow: hidden; background: #fff; border-radius: inherit; box-shadow: 0 50px 90px -30px rgba(1, 20, 25, .6), inset 0 0 0 clamp(4px, .5vw, 7px) var(--pill); transform-style: preserve-3d; will-change: transform; color: var(--ink); text-align: left; container-type: inline-size; }
+.vault__liquid { position: absolute; left: 0; right: 0; bottom: 0; height: calc(var(--lv, 10) * 1%); background: color-mix(in srgb, var(--pill) 52%, #fff); }
+.wave { position: absolute; left: 0; bottom: calc(100% - 1px); width: 200%; height: 26px; fill: color-mix(in srgb, var(--pill) 52%, #fff); animation: drift 7s linear infinite; }
+.wave--b { fill: color-mix(in srgb, var(--pill) 30%, #fff); height: 34px; animation-duration: 11s; animation-direction: reverse; }
+@keyframes drift { to { transform: translateX(-50%); } }
+.vault__head { position: absolute; left: 7%; right: 7%; top: 7%; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.vault__name { font: 600 7.6cqw/1.1 var(--app); }
+.vault__chip { padding: .36em .7em; border-radius: .6em; font: 800 4.4cqw var(--app); color: #087f9e; background: var(--sky); white-space: nowrap; }
+.vault__chip.done { color: #fff; background: #4ea72e; }
+.vault__ic { position: absolute; left: 50%; top: 53%; width: 64%; height: 56%; object-fit: contain; transform: translate(-50%, -50%); animation: bob 4.6s ease-in-out infinite; filter: drop-shadow(0 18px 18px rgba(1, 20, 25, .22)); }
+@keyframes bob { 50% { transform: translate(-50%, -54%) rotate(-2deg); } }
+.vault__foot { position: absolute; left: 7%; right: 7%; bottom: 6.5%; display: flex; justify-content: space-between; align-items: baseline; }
+.vault__foot strong { font: 700 7.2cqw var(--mono); letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+.vault__foot em { font: 700 4.8cqw var(--mono); font-style: normal; font-variant-numeric: tabular-nums; }
+
+/* the app's colour selector, promoted to the page's main control */
+.picker { position: absolute; z-index: 6; left: var(--g); bottom: 66px; display: flex; gap: 10px; }
+.pill { position: relative; width: clamp(62px, 6.4vw, 96px); height: 26px; border-radius: 999px; background: var(--pc); box-shadow: 0 0 0 2px rgba(255, 255, 255, .55); transition: transform .3s var(--spring), box-shadow .3s; }
+.pill:hover { transform: translateY(-3px); }
+.pill[aria-pressed="true"] { box-shadow: 0 0 0 3px #fff; }
+.pill span { position: absolute; left: 50%; bottom: calc(100% + 26px); transform: translateX(-50%); white-space: nowrap; font: 700 13px var(--body); opacity: 0; transition: opacity .2s; pointer-events: none; }
+.pill:hover span, .pill:focus-visible span { opacity: 1; }
+.drop { position: absolute; top: -13px; left: 0; width: 22px; height: 36px; pointer-events: none; z-index: 2; transition: transform .55s var(--spring); }
+.drop::before { content: ""; position: absolute; inset: 0; background: #fff; clip-path: path("M11 0 C13 8 22 18 22 25 A11 11 0 0 1 0 25 C0 18 9 8 11 0Z"); }
+
+.note { position: absolute; z-index: 6; right: var(--g); bottom: 22px; margin: 0; font-size: 13px; color: rgba(255, 255, 255, .78); }
+
+.copy > * { animation: up .9s var(--e) both; }
+.copy > :nth-child(2) { animation-delay: .1s; }
+.copy > :nth-child(3) { animation-delay: .2s; }
+@keyframes up { from { translate: 0 26px; opacity: 0; } to { translate: 0 0; opacity: 1; } }
+
+@media (max-width: 900px) {
+  .hero { height: auto; min-height: var(--H); padding: calc(var(--nav) + 20px) var(--g) 76px; display: flex; flex-direction: column; gap: 24px; }
+  .copy, .vault, .picker { position: relative; left: auto; right: auto; top: auto; bottom: auto; transform: none; width: auto; }
+  h1 { font-size: clamp(52px, 15vw, 96px); }
+  .vault { width: min(82vw, 340px); margin-inline: auto; animation: none; }
+  .picker { margin-top: 18px; gap: 6px; }
+  .pill { flex: 1; width: auto; height: 22px; }
+  .note { display: none; }
+}

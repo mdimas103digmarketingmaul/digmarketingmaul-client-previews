@@ -1,0 +1,43 @@
+/* Option 03: no photo. The headline lives in one giant Main Box, every other box pours out behind it. */
+
+.hero {
+  --H: max(680px, 100svh);
+  --bs: 11px;
+  position: relative; height: var(--H); overflow: hidden; background: var(--blue);
+}
+
+.wall { position: absolute; inset: 0; display: flex; justify-content: center; gap: 14px; }
+.col { display: flex; flex-direction: column; gap: 14px; flex: none; will-change: transform; }
+.cell { display: block; flex: none; border-radius: 2.4em; font-size: var(--bs); transition: transform .35s var(--spring), box-shadow .3s; --focus: var(--ink); }
+.cell:hover { transform: scale(1.06) rotate(-1.5deg); box-shadow: 0 1.6em 3em -1em rgba(1, 20, 25, .5); position: relative; z-index: 2; }
+.wall__shade { position: absolute; inset: 0; pointer-events: none; background:
+  linear-gradient(180deg, rgba(0, 121, 153, .97) 0, rgba(0, 121, 153, .92) 74px, rgba(0, 121, 153, 0) 176px),
+  radial-gradient(56% 66% at 50% 54%, rgba(6, 158, 198, .6) 30%, rgba(6, 158, 198, 0) 76%);
+}
+
+.giga {
+  position: absolute; z-index: 10; left: 50%; top: calc(50% + 26px); transform: translate(-50%, -50%);
+  width: min(calc(100% - var(--g) * 2), clamp(800px, 56vw, 1100px)); padding: clamp(24px, 3vw, 40px);
+  background: #fff; border-radius: clamp(36px, 4vw, 56px); color: var(--ink);
+  box-shadow: 0 50px 90px -30px rgba(1, 40, 55, .6), inset 0 0 0 5px var(--blue);
+  animation: giga 1s var(--spring) both;
+}
+@keyframes giga { from { transform: translate(-50%, -46%) scale(.7); opacity: 0; } to { transform: translate(-50%, -50%) scale(1); opacity: 1; } }
+.giga__top { display: flex; justify-content: space-between; align-items: center; }
+.giga__top img { width: 36px; height: auto; }
+.giga__chip { padding: 7px 14px; border-radius: 12px; font: 800 15px var(--app); color: #087f9e; background: var(--sky); }
+h1 { margin-top: clamp(14px, 2vw, 22px); font: 700 clamp(44px, 5.4vw, 112px)/1.04 var(--head); letter-spacing: -.05em; }
+.giga mark { padding: 0 .1em; margin-left: -.06em; border-radius: .12em; color: var(--ink); background: linear-gradient(transparent 20%, #ffd23f 20%, #ffd23f 92%, transparent 92%); white-space: nowrap; }
+.lead { margin-top: 16px; max-width: 30em; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.4; color: var(--ink-2); }
+.giga__foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 18px; margin-top: clamp(20px, 3vw, 34px); flex-wrap: wrap; }
+.giga__sum { text-align: right; }
+.giga__sum small { display: block; font: 500 14px var(--app); color: var(--ink-2); }
+.giga__sum strong { display: block; font: 700 clamp(22px, 2.3vw, 32px)/1.15 var(--mono); letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+
+.note { position: absolute; z-index: 12; left: 50%; bottom: 58px; transform: translateX(-50%); margin: 0; width: max-content; max-width: calc(100% - var(--g) * 2); padding: 6px 14px; border-radius: 999px; font-size: 12.5px; color: #fff; background: rgba(0, 92, 118, .72); text-align: center; }
+
+@media (max-width: 720px) {
+  .hero { --bs: 8.2px; --H: max(680px, 100svh); }
+  .giga__sum { text-align: left; width: 100%; }
+  .note { border-radius: 14px; bottom: 54px; }
+}

@@ -163,11 +163,13 @@
   /* ---------- scroll state: solid bar + the item for the section in view ---------- */
   var spies = items.filter(function (i) { return i.dataset.spy; }).map(function (i) {
     return { btn: trigger(i), el: document.getElementById(i.dataset.spy) };
-  });
+  }).filter(function (s) { return s.el; }); // sub-pages reuse this nav without every section
+  // Sub-pages without a dark hero mark the nav data-nav-solid to keep the white bar from the top.
+  var alwaysSolid = nav.hasAttribute('data-nav-solid');
   var ticking = false;
   function onScroll() {
     ticking = false;
-    nav.classList.toggle('solid', window.scrollY > window.innerHeight - 90);
+    nav.classList.toggle('solid', alwaysSolid || window.scrollY > window.innerHeight - 90);
     var line = 120, bottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4, on = null;
     spies.forEach(function (s) {
       var r = s.el.getBoundingClientRect();

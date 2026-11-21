@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="id" data-base="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Try Me — HARIAKU</title>
+  <meta name="description" content="Coba padu padan atasan HARIAKU pada model dengan tinggi, berat, warna kulit, dan gaya hijab yang mirip denganmu.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="../shared/brand/hariaku-3-transparent.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/css/base.css">
+  <style>
+    body { --sans: 'Hanken Grotesk', system-ui, sans-serif; background: var(--ecru); }
+    .tm-head { padding: calc(var(--nav-h) + 56px) 0 48px; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 24px 64px; align-items: end; }
+    .tm-head .eyebrow { grid-column: 1 / -1; color: var(--terracotta-ink); }
+    .tm-head h1 { font-size: clamp(52px, 6.4vw, 104px); }
+    .tm-head h1 em { color: var(--terracotta); }
+    .tm-head p { font-size: 16.5px; color: rgba(54, 43, 40, .78); max-width: 42ch; }
+    .tm-body { padding-bottom: 96px; }
+    .tm-body .to__frame { border-radius: 999px 999px 4px 4px; }
+    .tm-body .to__badge { top: auto; bottom: 14px; }
+    .tm-status { margin-top: 72px; padding: 28px 32px; border: 1px solid var(--line); border-radius: 18px; display: grid; grid-template-columns: auto 1fr; gap: 8px 28px; align-items: center; }
+    .tm-status b { font-family: var(--serif); font-weight: 500; font-size: 56px; line-height: 1; color: var(--terracotta); grid-row: span 2; }
+    .tm-status p { font-size: 14.5px; color: rgba(54, 43, 40, .75); }
+    .tm-bar { height: 4px; background: var(--line); border-radius: 4px; overflow: hidden; }
+    .tm-bar span { display: block; height: 100%; background: var(--terracotta); }
+    .foot { padding: 170px var(--pad) 32px; text-align: center; color: var(--terracotta); border-top: 1px solid var(--line); }
+    .foot p { margin-top: 30px; font-size: 12px; color: rgba(54, 43, 40, .55); }
+    @media (max-width: 860px) { .tm-head { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a class="nav__brand" href="../" aria-label="HARIAKU, kembali ke daftar preview"><span data-mark="wordmark" data-label="HARIAKU"></span></a>
+    <nav class="nav__menu" aria-label="Preview">
+      <a href="../option-01/">Option 01</a>
+      <a href="../option-02/">Option 02</a>
+      <a href="../option-03/">Option 03</a>
+    </nav>
+    <div class="nav__end">
+      <a class="nav__icon" data-link="instagram" aria-label="Instagram"><span data-icon="ig"></span></a>
+      <a class="nav__icon" data-link="tiktok" aria-label="TikTok"><span data-icon="tt"></span></a>
+      <a class="nav__cta" data-link="shopee">Belanja di Shopee</a>
+      <button class="nav__toggle" aria-expanded="false" aria-label="Buka menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <header class="tm-head">
+      <p class="eyebrow">Try Me · HARIAKU</p>
+      <h1 class="display" data-lines data-reveal data-perch="head" data-perch-x=".86" data-perch-y=".2" data-perch-size="72">Coba dulu,<br><em>baru jatuh hati.</em></h1>
+      <p data-reveal>Atur tinggi dan berat, pilih warna kulit dan gaya hijab, lalu pilih atasannya. Pilihanmu tersimpan di tautan, jadi look-nya bisa langsung dibagikan.</p>
+    </header>
+    <div class="tm-body">
+      <div class="tryon" data-tryon></div>
+      <section class="tm-status" aria-label="Status aset Try Me">
+        <b data-count>0</b>
+        <p><strong>gambar simulasi siap</strong> dari 84 di pilot Lite (12 model dasar + 72 look, gaya pashmina). Kombinasi yang belum ada, misalnya hijab segi empat, memakai kombinasi terdekat atau foto asli HARIAKU.</p>
+        <div class="tm-bar"><span data-bar style="width:0"></span></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="foot__lockup">
+      <div class="foot__perch" data-perch="footer" data-perch-size="fit"><span class="foot__perch-static" data-mark="lockupButterfly"></span></div>
+      <span class="foot__wordmark" data-mark="wordmark" data-label="HARIAKU"></span>
+    </div>
+    <p>© <span data-year>2026</span> HARIAKU</p>
+  </footer>
+
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
+  <script src="../shared/js/brand.js" defer></script>
+  <script src="../shared/js/data.js" defer></script>
+  <script src="data/looks.js" defer></script>
+  <script src="../shared/js/site.js" defer></script>
+  <script src="../shared/js/butterfly.js" defer></script>
+  <script src="../shared/js/tryon.js" defer></script>
+  <script src="js/page.js" defer></script>
+</body>
+</html>

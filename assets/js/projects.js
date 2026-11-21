@@ -21,5 +21,14 @@ window.DM_PROJECTS = [
     updated: "5 Nov 2026",
     options: 2,
     accent: "#11b8e4"
+  },
+  {
+    name: "HARIAKU",
+    slug: "hariaku",
+    type: "Landing Page + Try Me",
+    status: "Design Exploration",
+    updated: "21 Nov 2026",
+    options: 1,
+    accent: "#B55B32"
   }
 ];

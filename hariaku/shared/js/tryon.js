@@ -253,10 +253,44 @@
       frame.style.setProperty('--cmp', 'calc(28px + (100% - 56px) * ' + (v / 100).toFixed(4) + ')');
     }
     setCmp(50);
+    // keyboard (the range input stays focusable for arrow keys)
     compare.addEventListener('input', function () { setCmp(+compare.value); frame.classList.add('was-dragged'); });
-    compare.addEventListener('pointerdown', function () { frame.classList.add('is-dragging'); });
-    addEventListener('pointerup', function () { frame.classList.remove('is-dragging'); });
     compare.addEventListener('change', function () { emit('hk:tryon:compare'); });
+    // mouse + touch: drag anywhere on the photo (or grab the round handle). The frame allows vertical
+    // page scrolling (touch-action: pan-y); horizontal drags move the divider. The handle itself blocks
+    // scrolling so a finger on it always drags.
+    var drag = null;
+    function valueAt(x) { var r = frame.getBoundingClientRect(); return Math.max(0, Math.min(100, (x - r.left - 28) / Math.max(1, r.width - 56) * 100)); }
+    frame.addEventListener('pointerdown', function (e) {
+      if (!frame.classList.contains('has-compare') || e.button > 0) return;
+      if (e.target.closest('.to__badge')) return;
+      drag = { id: e.pointerId, x: e.clientX, y: e.clientY, on: e.pointerType === 'mouse' || !!e.target.closest('.to__knob') };
+      if (drag.on) start(e);
+    });
+    function start(e) {
+      drag.on = true;
+      try { frame.setPointerCapture(drag.id); } catch (err) {}
+      frame.classList.add('is-dragging', 'was-dragged');
+      setCmp(valueAt(e.clientX));
+    }
+    frame.addEventListener('pointermove', function (e) {
+      if (!drag || e.pointerId !== drag.id) return;
+      if (!drag.on) {
+        var dx = Math.abs(e.clientX - drag.x), dy = Math.abs(e.clientY - drag.y);
+        if (dx > 6 && dx > dy) start(e); else if (dy > 10) { drag = null; return; } else return;
+      }
+      e.preventDefault();
+      setCmp(valueAt(e.clientX));
+    });
+    function stop() {
+      if (!drag) return;
+      var was = drag.on; drag = null;
+      frame.classList.remove('is-dragging');
+      if (was) emit('hk:tryon:compare');
+    }
+    frame.addEventListener('pointerup', stop);
+    frame.addEventListener('pointercancel', stop);
+    frame.addEventListener('lostpointercapture', stop);
     // once, when the comparison first comes into view: a small left-right nudge to show it can be dragged
     var nudged = false;
     function nudge() {

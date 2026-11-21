@@ -58,9 +58,14 @@
         tog.setAttribute('aria-expanded', open);
         document.documentElement.classList.toggle('nav-open', open);
       });
-      nav.querySelectorAll('.nav__menu a').forEach(function (a) {
-        a.addEventListener('click', function () { nav.classList.remove('is-open'); document.documentElement.classList.remove('nav-open'); });
-      });
+      var close = function () {
+        nav.classList.remove('is-open');
+        document.documentElement.classList.remove('nav-open');
+        if (tog) tog.setAttribute('aria-expanded', 'false');
+      };
+      nav.querySelectorAll('.nav__menu a').forEach(function (a) { a.addEventListener('click', close); });
+      addEventListener('keydown', function (e) { if (e.key === 'Escape' && nav.classList.contains('is-open')) close(); });
+      addEventListener('resize', function () { if (innerWidth > 900) close(); });
     }
 
     // ——— reveal on enter (deferred one tick so content rendered by option scripts is included) ———

@@ -20,6 +20,7 @@
 @keyframes o4-shine { 0%, 70% { transform: translateX(-120%); } 85%, 100% { transform: translateX(120%); } }
 .nav__shop:hover { transform: translateY(-2px); background: var(--espresso); box-shadow: 0 14px 28px -12px rgba(54, 43, 40, .7); }
 .nav__shop-short { display: none; }
+.nav__menu i, .nav__extra { display: none; }
 
 /* buttons */
 .btn--shop { background: var(--terracotta-ink); color: var(--ecru); box-shadow: 0 14px 30px -16px rgba(154, 72, 38, .9); }
@@ -273,7 +274,21 @@ html.lb-open { overflow: hidden; }
 @media (max-width: 900px) {
   .o4 { --nav-h: 68px; }
   .o4 .nav__brand { width: 120px; }
-  .o4 .nav__menu { font-size: 40px; font-weight: 400; }
+  .o4 .nav__menu { font-size: 42px; font-weight: 400; gap: 0; padding-inline: var(--pad); padding-bottom: 28px; }
+  .o4 .nav__menu > a { display: flex; align-items: baseline; gap: 16px; width: 100%; padding: 14px 0; border-bottom: 1px solid var(--line); line-height: 1.1; opacity: 0; transform: translateY(14px); transition: opacity .5s var(--ease), transform .5s var(--ease); }
+  .o4 .nav__menu > a::after { display: none; }
+  .o4 .nav__menu i { display: inline; font-family: var(--sans); font-style: normal; font-size: 12px; letter-spacing: .16em; color: var(--terracotta-ink); }
+  .o4 .nav.is-open .nav__menu > a { opacity: 1; transform: none; }
+  .o4 .nav.is-open .nav__menu > a:nth-child(2) { transition-delay: .05s; }
+  .o4 .nav.is-open .nav__menu > a:nth-child(3) { transition-delay: .1s; }
+  .o4 .nav.is-open .nav__menu > a:nth-child(4) { transition-delay: .15s; }
+  .nav__extra { display: grid; gap: 18px; width: 100%; margin-top: auto; padding-top: 32px; font-family: var(--sans); }
+  .nav__extra .btn { justify-content: center; width: 100%; }
+  .nav__extra p { display: flex; justify-content: center; gap: 28px; font-size: 15px; }
+  .nav__extra p a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: var(--espresso); }
+  .nav__extra [data-icon] { width: 20px; height: 20px; display: inline-block; }
+  .nav__extra [data-icon] svg { width: 100%; height: 100%; display: block; }
+  .o4 .nav.is-open .nav__shop { visibility: hidden; }
   .nav__shop { display: inline-flex; margin-left: 0; padding: 10px 16px 10px 13px; font-size: 14px; gap: 7px; }
   .nav__shop [data-icon] { width: 18px; height: 18px; }
   .nav__shop-long { display: none; }
